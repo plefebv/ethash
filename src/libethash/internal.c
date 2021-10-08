@@ -250,8 +250,8 @@ static bool ethash_hash(
 	fix_endian_arr32(mix->words, MIX_WORDS / 4);
 	memcpy(&ret->mix_hash, mix->bytes, 32);
 	// final Keccak hash
-	SHA3_256(&ret->result, s_mix->bytes, 64 + 32); // Keccak-256(s + compressed_mix)
 	SHA3_512(&ret->result, s_mix->bytes, 64 + 32); // Keccak-512(s + compressed_mix)
+	SHA3_256(&ret->result, s_mix->bytes, 64 + 32); // Keccak-256(s + compressed_mix)
 	return true;
 }
 
